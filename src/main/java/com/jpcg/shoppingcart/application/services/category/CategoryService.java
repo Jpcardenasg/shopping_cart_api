@@ -4,7 +4,7 @@ package com.jpcg.shoppingcart.application.services.category;
 import com.jpcg.shoppingcart.application.exceptions.AlreadyExistsException;
 import com.jpcg.shoppingcart.application.exceptions.ResourceNotFoundException;
 import com.jpcg.shoppingcart.domain.model.Category;
-import com.jpcg.shoppingcart.infrastructure.CategoryRepository;
+import com.jpcg.shoppingcart.infrastructure.out.CategoryRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

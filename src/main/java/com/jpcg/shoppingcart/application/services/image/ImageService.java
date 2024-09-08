@@ -5,7 +5,7 @@ import com.jpcg.shoppingcart.application.services.product.ProductService;
 import com.jpcg.shoppingcart.domain.dtos.ImageDto;
 import com.jpcg.shoppingcart.domain.model.Image;
 import com.jpcg.shoppingcart.domain.model.Product;
-import com.jpcg.shoppingcart.infrastructure.ImageRepository;
+import com.jpcg.shoppingcart.infrastructure.out.ImageRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;

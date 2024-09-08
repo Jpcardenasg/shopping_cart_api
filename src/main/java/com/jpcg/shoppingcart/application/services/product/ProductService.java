@@ -5,8 +5,8 @@ import com.jpcg.shoppingcart.application.request.AddProductRequest;
 import com.jpcg.shoppingcart.application.request.UpdateProductRequest;
 import com.jpcg.shoppingcart.domain.model.Category;
 import com.jpcg.shoppingcart.domain.model.Product;
-import com.jpcg.shoppingcart.infrastructure.CategoryRepository;
-import com.jpcg.shoppingcart.infrastructure.ProductRepository;
+import com.jpcg.shoppingcart.infrastructure.out.CategoryRepository;
+import com.jpcg.shoppingcart.infrastructure.out.ProductRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
