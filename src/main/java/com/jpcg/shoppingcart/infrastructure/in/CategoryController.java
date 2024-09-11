@@ -25,7 +25,7 @@ public class CategoryController {
 
         try {
             Category newCategory = categoryService.addCategory(category);
-            return  ResponseEntity.ok(new ApiResponse("Category created!", newCategory));
+            return  ResponseEntity.ok(new ApiResponse("Category created successfully!", newCategory));
         } catch (AlreadyExistsException e) {
             return ResponseEntity.status(CONFLICT).body(new ApiResponse(e.getMessage(), null));
         }
@@ -36,7 +36,7 @@ public class CategoryController {
 
         try {
             Category updatedCategory = categoryService.updateCategory(category, categoryId);
-            return  ResponseEntity.ok(new ApiResponse("Category updated!", updatedCategory));
+            return  ResponseEntity.ok(new ApiResponse("Category updated successfully!", updatedCategory));
         } catch (ResourceNotFoundException e) {
             return ResponseEntity.status(NOT_FOUND).body(new ApiResponse(e.getMessage(), null));
         }
@@ -47,7 +47,7 @@ public class CategoryController {
 
         try {
             categoryService.deleteCategory(categoryId);
-            return  ResponseEntity.ok(new ApiResponse("Category found!", null));
+            return  ResponseEntity.ok(new ApiResponse("Category deleted successfully!", null));
         } catch (ResourceNotFoundException e) {
             return ResponseEntity.status(NOT_FOUND).body(new ApiResponse(e.getMessage(), null));
         }
