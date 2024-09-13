@@ -3,16 +3,20 @@ package com.jpcg.shoppingcart.application.services.product;
 import com.jpcg.shoppingcart.application.exceptions.ResourceNotFoundException;
 import com.jpcg.shoppingcart.application.request.AddProductRequest;
 import com.jpcg.shoppingcart.application.request.UpdateProductRequest;
+import com.jpcg.shoppingcart.domain.dtos.ImageDto;
+import com.jpcg.shoppingcart.domain.dtos.ProductDto;
 import com.jpcg.shoppingcart.domain.model.Category;
+import com.jpcg.shoppingcart.domain.model.Image;
 import com.jpcg.shoppingcart.domain.model.Product;
 import com.jpcg.shoppingcart.infrastructure.out.CategoryRepository;
+import com.jpcg.shoppingcart.infrastructure.out.ImageRepository;
 import com.jpcg.shoppingcart.infrastructure.out.ProductRepository;
 import lombok.RequiredArgsConstructor;
+import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
-
 
 /**
  * Service class for managing products in the shopping cart system.
@@ -24,6 +28,8 @@ public class ProductService  implements IProductService {
 
     private final ProductRepository productRepository;
     private final CategoryRepository categoryRepository;
+    private final ModelMapper modelMapper;
+    private final ImageRepository imageRepository;
 
     /**
      * Adds a new product to the system.
@@ -199,5 +205,25 @@ public class ProductService  implements IProductService {
     @Override
     public Long countProductsByBrandAndName(String brand, String name) {
         return productRepository.countByBrandAndName(brand,name);
+    }
+
+    @Override
+    public List<ProductDto> findProductDtos(List<Product> products) {
+        return products.stream()
+                .map(this::convertToDto)
+                .toList();
+    }
+
+    @Override
+    public ProductDto convertToDto(Product product) {
+        ProductDto productDto =  modelMapper.map(product, ProductDto.class);
+        List<Image> images = imageRepository.findByProductId(product.getId());
+        List<ImageDto> imageDtos = images.stream()
+                .map(image -> modelMapper.map(image, ImageDto.class))
+                .toList();
+
+        productDto.setImages(imageDtos);
+
+        return productDto;
     }
 }
