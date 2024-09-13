@@ -36,7 +36,7 @@ public class Image {
      * The type of the image file (e.g., "image/jpeg").
      */
     private String fileType;
-    private String url;
+    private String downloadUrl;
 
     /**
      * The binary data of the image file stored in the database.

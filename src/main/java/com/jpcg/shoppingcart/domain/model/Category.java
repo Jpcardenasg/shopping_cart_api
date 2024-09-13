@@ -1,5 +1,6 @@
 package com.jpcg.shoppingcart.domain.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -21,6 +22,8 @@ public class Category {
     public Category(String name) {
         this.name = name;
     }
+
+    @JsonIgnore
     @OneToMany(mappedBy = "category")
     private List<Product> products;
 
